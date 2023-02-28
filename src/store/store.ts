@@ -1,89 +1,64 @@
-const store: any = {
-    header: {
+type StoreType = {
+    sidebar: SidebarType
+    profile: ProfileType
+}
+
+export type ProfileType = {
+    info: ProfileInfoType
+}
+
+type ProfileInfoType = {
+    id: number
+    name: string
+    city: string
+    age: number
+    job: string
+    avatar: string
+    bg: string
+}
+
+export type SidebarType = {
+    links: SidebarLinksType[]
+}
+
+export type SidebarLinksType = {
+    id: number
+    text: string
+    url: string
+}
+
+
+const store: StoreType = {
+    profile: {
+        info: {
+            id: 0,
+            name: 'Timur Avezov',
+            city: 'Tashkent',
+            age: 23,
+            job: 'Front-end Developer',
+            avatar: 'https://external-preview.redd.it/09t_euf4wShpq_wQ-VULNWxy_NkoN9BA52FIrvPHNDk.jpg?auto=webp&s=edce194c139f5819d6a70e35c00038b9eebb4541',
+            bg: 'https://www.nemlig.com/scommerce/images/109845-Carlsberg-landing-page-hos-nemlig-TOPBANNER.jpg?i=%7B1D30F7EF-54D9-40E3-9F70-F0B2B49D8180%7D&v=gIJ7kRxI'
+        }
+    },
+    sidebar: {
         links: [
             {
                 id: 0,
-                name: 'Home',
+                text: 'Home',
                 url: '/'
             },
             {
                 id: 1,
-                name: 'News',
+                text: 'News',
                 url: '/news/'
             },
             {
                 id: 2,
-                name: 'Messages',
+                text: 'Messages',
                 url: '/messages/'
             }
         ]
-    },
-    technologies: [
-        {
-            id: 0,
-            name: 'HTML'
-        },
-        {
-            id: 1,
-            name: 'CSS'
-        },
-        {
-            id: 2,
-            name: 'SCSS'
-        },
-        {
-            id: 3,
-            name: 'JQuery'
-        },
-        {
-            id: 4,
-            name: 'JavaScript'
-        },
-        {
-            id: 5,
-            name: 'TypeScript'
-        },
-        {
-            id: 6,
-            name: 'BEM'
-        },
-        {
-            id: 7,
-            name: 'REST API'
-        },
-        {
-            id: 8,
-            name: 'React'
-        },
-        {
-            id: 9,
-            name: 'Redux'
-        },
-        {
-            id: 10,
-            name: 'Figma'
-        },
-        {
-            id: 11,
-            name: 'Wondershare Filmora'
-        },
-        {
-            id: 12,
-            name: 'Basecamp'
-        },
-        {
-            id: 13,
-            name: 'FileZilla'
-        },
-        {
-            id: 14,
-            name: 'Git'
-        },
-        {
-            id: 15,
-            name: 'Tilda'
-        }
-    ]
+    }
 };
 
 

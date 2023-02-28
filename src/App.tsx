@@ -1,14 +1,19 @@
+import './App.css';
 import React from 'react';
-import Header from "./components/Header/Header";
-import Technologies from "./components/Technologies/Technologies";
 import store from './store/store';
+import Header from "./components/Header/Header";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Profile from "./components/Profile/Profile";
+import Footer from "./components/Footer/Footer";
 
 
 function App() {
     return (
-        <div className="App">
-            <Header links={store.header.links}/>
-            <Technologies technologies={store.technologies}/>
+        <div className="app">
+            <Header/>
+            <Sidebar sidebar={store.sidebar}/>
+            <Profile profile={store.profile}/>
+            <Footer/>
         </div>
     );
 }
