@@ -1,0 +1,113 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+    background-color: var(--block-color);
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+}
+
+.logo svg {
+    overflow: visible;
+}
+
+.logo:hover .face {
+    transform-origin: bottom center;
+    animation: rotate-logo 3s linear infinite;
+}
+
+.burger {
+    position: relative;
+    flex: 0 0 35px;
+    height: 25px;
+    background-color: unset;
+    border: 0;
+    cursor: pointer;
+}
+
+.burger:before,
+.burger:after,
+.burger span {
+    position: absolute;
+    left: 0;
+    height: 4px;
+    width: 35px;
+    background-color: #fff;
+    transition: top 0.3s, transform 0.3s, background-color 0.3s;
+}
+
+.burger:before,
+.burger:after {
+    content: '';
+}
+
+.burger:before {
+    top: 0;
+}
+
+.burger:after {
+    top: 100%;
+}
+
+.burger span {
+    top: 50%;
+}
+
+.burger:hover:before,
+.burger:hover:after,
+.burger:hover span {
+    background-color: var(--main-color);
+}
+
+.open_burger .burger:before {
+    top: calc(50% - 2px);
+    transform: rotate(45deg);
+}
+
+.open_burger .burger:after {
+    top: calc(50% - 2px);
+    transform: rotate(-45deg);
+}
+
+.open_burger .burger span {
+    background-color: unset;
+}
+
+
+@keyframes rotate-logo {
+    25% {
+        transform: rotate(6deg);
+    }
+
+    50% {
+        transform: unset;
+    }
+
+    75% {
+        transform: rotate(-6deg);
+    }
+}
+
+
+@media (min-width: 992px) {
+    .header {
+        padding: 15px 0;
+    }
+
+    .burger {
+        display: none;
+    }
+}

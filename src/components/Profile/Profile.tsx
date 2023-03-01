@@ -1,35 +1,38 @@
 import {ProfileType} from "../../store/store";
+import c from './Profile.module.css';
+
 
 type ProfileProps = {
     profile: ProfileType
 }
 
-function Profile(props: ProfileProps) {
+
+function Profile({profile}: ProfileProps) {
     return (
-        <section className={'content profile'}>
-            <div className={'profile__info'}>
-                <div className={'profile__avatar-ibg'}>
-                    <img src={props.profile.info.avatar}/>
+        <section className={c.profile}>
+            <div className={c.info}>
+                <div className={c.avatar_ibg}>
+                    <img src={profile.info.avatar}/>
                 </div>
-                <div className={'profile__bg-ibg'}>
-                    <img src={props.profile.info.bg}/>
+                <div className={c.bg_ibg}>
+                    <img src={profile.info.bg}/>
                 </div>
-                <div className={'profile__about'}>
-                    <div className={'profile__line'}>
-                        <div className={'profile__label'}>Full name:</div>
-                        <div className={'profile__value'}>{props.profile.info.name}</div>
+                <div className={c.about}>
+                    <div className={c.line}>
+                        <div className={c.label}>Full name:</div>
+                        <div>{profile.info.name}</div>
                     </div>
-                    <div className={'profile__line'}>
-                        <div className={'profile__label'}>Age:</div>
-                        <div className={'profile__value'}>{props.profile.info.age}</div>
+                    <div className={c.line}>
+                        <div className={c.label}>Age:</div>
+                        <div>{profile.info.age}</div>
                     </div>
-                    <div className={'profile__line'}>
-                        <div className={'profile__label'}>City:</div>
-                        <div className={'profile__value'}>{props.profile.info.city}</div>
+                    <div className={c.line}>
+                        <div className={c.label}>City:</div>
+                        <div>{profile.info.city}</div>
                     </div>
-                    <div className={'profile__line'}>
-                        <div className={'profile__label'}>Job title:</div>
-                        <div className={'profile__value'}>{props.profile.info.job}</div>
+                    <div className={c.line}>
+                        <div className={c.label}>Job title:</div>
+                        <div>{profile.info.job}</div>
                     </div>
                 </div>
             </div>

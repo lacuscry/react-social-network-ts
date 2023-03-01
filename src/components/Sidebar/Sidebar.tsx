@@ -1,24 +1,28 @@
 import {SidebarType} from "../../store/store";
+import c from "./Sidebar.module.css";
 
 
 type SidebarProps = {
     sidebar: SidebarType
+    burgerState: boolean
+    toggleBurger: () => void
 }
 
 
-function Sidebar(props: SidebarProps) {
-    const navList = props.sidebar.links.map(link => {
+function Sidebar({sidebar, burgerState, toggleBurger}: SidebarProps) {
+    const navList = sidebar.links.map(link => {
       return (
-          <li className={'sidebar__link'} key={link.id}>
-              <a href={link.url}>{link.text}</a>
+          <li key={link.id}>
+              <a className={c.link} href={link.url}>{link.text}</a>
           </li>
       )
     })
 
     return (
-        <aside className={'sidebar'}>
-            <nav className={'sidebar__nav'}>
-                <ul className={'sidebar__list'}>
+        <aside className={c.sidebar + (burgerState ? ` ${c.open}` : '')}>
+            <div onClick={toggleBurger} className={c.bg}></div>
+            <nav className={c.nav}>
+                <ul className={c.list}>
                     {navList}
                 </ul>
             </nav>

@@ -44,7 +44,7 @@ const store: StoreType = {
         links: [
             {
                 id: 0,
-                text: 'Home',
+                text: 'Profile',
                 url: '/'
             },
             {
@@ -56,6 +56,21 @@ const store: StoreType = {
                 id: 2,
                 text: 'Messages',
                 url: '/messages/'
+            },
+            {
+                id: 3,
+                text: 'Friends',
+                url: '/friends/'
+            },
+            {
+                id: 4,
+                text: 'Users',
+                url: '/users/'
+            },
+            {
+                id: 5,
+                text: 'Settings',
+                url: '/settings/'
             }
         ]
     }
