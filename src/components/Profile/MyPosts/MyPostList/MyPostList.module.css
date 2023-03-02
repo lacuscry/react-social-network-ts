@@ -90,13 +90,16 @@
     background-color: var(--button-color);
     border-radius: 10px;
     border: 1px solid var(--bg-color);
+    outline: 0;
     cursor: pointer;
     color: #fff;
     transition: background-color 0.3s;
 }
 
 .likes:hover,
-.comments:hover {
+.comments:hover,
+.likes:focus,
+.comments:focus {
     background-color: var(--button-color-hover);
 }
 
