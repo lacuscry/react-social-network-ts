@@ -1,50 +1,8 @@
 .profile {
     padding: 15px;
+    display: grid;
+    gap: 20px;
     background-color: var(--block-color);
     border-radius: 10px;
     color: #fff;
-}
-
-.info {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.about {
-    flex: 1 1 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.label {
-    opacity: 0.7;
-}
-
-.line {
-    display: flex;
-    gap: 10px;
-}
-
-.avatar_ibg {
-    flex: 1 1 100%;
-    padding-bottom: 100%;
-}
-
-
-@media (min-width: 550px) {
-    .avatar_ibg {
-        flex: 0 0 200px;
-        padding-bottom: 200px;
-    }
-
-    .bg_ibg {
-        flex: 1 1 auto;
-        padding-bottom: 200px;
-    }
-
-    .bg_ibg img {
-        object-position: right;
-    }
 }

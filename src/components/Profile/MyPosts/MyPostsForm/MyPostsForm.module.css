@@ -1,0 +1,97 @@
+.form {
+    display: flex;
+    gap: 5px
+}
+
+.textarea {
+    height: 100%;
+    width: 100%;
+    padding: 15px;
+    background-color: transparent;
+    border-color: var(--bg-color);
+    border-radius: 10px;
+    outline: 2px solid transparent;
+    resize: none;
+    font-family: inherit;
+    color: #fff;
+}
+
+.textarea:hover,
+.textarea:focus {
+    border-color: transparent;
+    outline-color: var(--button-color-hover);
+}
+
+.textarea::placeholder {
+    opacity: 0.7;
+    color: #fff;
+}
+
+.buttons {
+    flex: 0 0 100px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 35px);
+    gap: 5px;
+}
+
+.button {
+    grid-column: span 2;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--bg-color);
+    outline: 0;
+    background-color: var(--button-color);
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.file,
+.voice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--button-color);
+    border: 1px solid var(--bg-color);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.voice {
+    outline: 0;
+}
+
+.file input {
+    position: absolute;
+    height: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.button:hover,
+.file:hover,
+.voice:hover,
+.button:focus,
+.file:has(input:focus),
+.voice:focus {
+    background-color: var(--button-color-hover);
+}
+
+
+@media (min-width: 769px) {
+    .form {
+        gap: 7px
+    }
+
+    .buttons {
+        flex: 0 0 130px;
+        grid-template-rows: repeat(2, 40px);
+        gap: 7px;
+    }
+}

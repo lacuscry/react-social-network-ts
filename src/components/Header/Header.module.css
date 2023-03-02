@@ -8,6 +8,11 @@
     height: auto;
     padding: 10px 0;
     background-color: var(--block-color);
+    transition: padding 0.3s, background-color 0.3s;
+}
+
+.header.fixed {
+    background-color: var(--block-color-dark);
 }
 
 .container {
@@ -18,6 +23,12 @@
 
 .logo {
     display: flex;
+    border: 1px solid transparent;
+    outline: 0;
+}
+
+.logo:focus {
+    border-color: var(--bg-color);
 }
 
 .logo svg {
@@ -26,7 +37,7 @@
 
 .logo:hover .face {
     transform-origin: bottom center;
-    animation: rotate-logo 3s linear infinite;
+    animation: rotate-logo 1s linear infinite;
 }
 
 .burger {
@@ -35,6 +46,7 @@
     height: 25px;
     background-color: unset;
     border: 0;
+    outline: 0;
     cursor: pointer;
 }
 
@@ -69,16 +81,19 @@
 .burger:hover:before,
 .burger:hover:after,
 .burger:hover span {
-    background-color: var(--main-color);
+    background-color: var(--button-color);
+}
+
+.open_burger .burger:before,
+.open_burger .burger:after {
+    top: calc(50% - 2px);
 }
 
 .open_burger .burger:before {
-    top: calc(50% - 2px);
     transform: rotate(45deg);
 }
 
 .open_burger .burger:after {
-    top: calc(50% - 2px);
     transform: rotate(-45deg);
 }
 
@@ -105,6 +120,10 @@
 @media (min-width: 992px) {
     .header {
         padding: 15px 0;
+    }
+
+    .header.fixed {
+        padding: 10px 0;
     }
 
     .burger {

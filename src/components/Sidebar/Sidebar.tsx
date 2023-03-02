@@ -11,15 +11,15 @@ type SidebarProps = {
 
 function Sidebar({sidebar, burgerState, toggleBurger}: SidebarProps) {
     const navList = sidebar.links.map(link => {
-      return (
-          <li key={link.id}>
-              <a className={c.link} href={link.url}>{link.text}</a>
-          </li>
-      )
-    })
+        return (
+            <li key={link.id}>
+                <a className={c.link} href={link.url}>{link.text}</a>
+            </li>
+        );
+    });
 
     return (
-        <aside className={c.sidebar + (burgerState ? ` ${c.open}` : '')}>
+        <aside className={c.sidebar + (burgerState ? ` ${c.open}` : "")}>
             <div onClick={toggleBurger} className={c.bg}></div>
             <nav className={c.nav}>
                 <ul className={c.list}>
@@ -27,7 +27,7 @@ function Sidebar({sidebar, burgerState, toggleBurger}: SidebarProps) {
                 </ul>
             </nav>
         </aside>
-    )
+    );
 }
 
 
