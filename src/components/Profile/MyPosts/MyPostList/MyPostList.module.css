@@ -64,6 +64,7 @@
 
 .row {
     display: flex;
+    flex-direction: row-reverse;
     align-items: center;
     gap: 5px;
 }
@@ -80,7 +81,7 @@
 .views {
     flex: 1 1 auto;
     display: flex;
-    justify-content: end;
+    justify-content: start;
     gap: 3px;
 }
 
@@ -145,6 +146,7 @@
 
     .row {
         align-self: end;
+        flex-direction: row;
     }
 
     .buttons {
