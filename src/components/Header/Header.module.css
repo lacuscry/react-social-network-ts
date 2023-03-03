@@ -78,12 +78,6 @@
     top: 50%;
 }
 
-.burger:hover:before,
-.burger:hover:after,
-.burger:hover span {
-    background-color: var(--button-color);
-}
-
 .open_burger .burger:before,
 .open_burger .burger:after {
     top: calc(50% - 2px);
@@ -128,5 +122,11 @@
 
     .burger {
         display: none;
+    }
+
+    .burger:hover:before,
+    .burger:hover:after,
+    .burger:hover span {
+        background-color: var(--button-color);
     }
 }
