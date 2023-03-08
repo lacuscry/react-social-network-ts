@@ -1,9 +1,11 @@
 type StoreType = {
     sidebar: SidebarType
-    profile: ProfileType
+    profilePage: ProfileType
+    dialogsPage: DialogsPageType
 }
 
 export type ProfileType = {
+    path: string
     info: ProfileInfoType
     posts: ProfilePostsType[]
 }
@@ -39,13 +41,35 @@ export type SidebarLinksType = {
     url: string
 }
 
+export type DialogsPageType = {
+    path: string
+    theme: string
+    dialogs: DialogsType[]
+}
+
+export type DialogsType = {
+    id: number
+    name: string
+    avatar: string
+    messages: DialogsMessagesType[]
+    status: string
+}
+
+type DialogsMessagesType = {
+    id: number
+    text: string
+    fromMe: boolean
+    time: string
+}
+
 
 const store: StoreType = {
-    profile: {
+    profilePage: {
+        path: "/profile/",
         info: {
             id: 0,
             name: "Timur Avezov",
-            city: "Tashkent",
+            city: "Istanbul",
             age: 23,
             job: "Front-end Developer",
             avatar: "https://external-preview.redd.it/09t_euf4wShpq_wQ-VULNWxy_NkoN9BA52FIrvPHNDk.jpg?auto=webp&s=edce194c139f5819d6a70e35c00038b9eebb4541",
@@ -87,7 +111,7 @@ const store: StoreType = {
             {
                 id: 0,
                 text: "Profile",
-                url: "/"
+                url: "/profile/"
             },
             {
                 id: 1,
@@ -96,8 +120,8 @@ const store: StoreType = {
             },
             {
                 id: 2,
-                text: "Messages",
-                url: "/messages/"
+                text: "Dialogs",
+                url: "/dialogs/"
             },
             {
                 id: 3,
@@ -113,6 +137,52 @@ const store: StoreType = {
                 id: 5,
                 text: "Settings",
                 url: "/settings/"
+            }
+        ]
+    },
+    dialogsPage: {
+        path: "/dialogs/",
+        theme: "https://blog.1a23.com/wp-content/uploads/sites/2/2020/02/Desktop.png",
+        dialogs: [
+            {
+                id: 0,
+                name: "Mark Zuckerberg",
+                avatar: "https://upload.wikimedia.org/wikipedia/commons/1/18/Mark_Zuckerberg_F8_2019_Keynote_%2832830578717%29_%28cropped%29.jpg",
+                messages: [
+                    {
+                        id: 0,
+                        text: "Hello Tim",
+                        fromMe: false,
+                        time: "5:00 am"
+                    },
+                    {
+                        id: 1,
+                        text: "Hi, Mark",
+                        fromMe: true,
+                        time: "5:05 am"
+                    }
+                ],
+                status: "online"
+            },
+            {
+                id: 1,
+                name: "Bill Gates",
+                avatar: "https://upload.wikimedia.org/wikipedia/commons/a/a8/Bill_Gates_2017_%28cropped%29.jpg",
+                messages: [
+                    {
+                        id: 0,
+                        text: "Harvard was just a phenomenal experience for me. Academic life was fascinating. I used to sit in on lots of classes I hadn’t even signed up for. And dorm life was terrific. I lived up at Radcliffe, in Currier House. There were always lots of people in my dorm room late at night discussing things, because everyone knew I didn’t worry about getting up in the morning. That’s how I came to be the leader of the anti-social group. We clung to each other as a way of validating our rejection of all those social people.",
+                        fromMe: false,
+                        time: "8:00 pm"
+                    },
+                    {
+                        id: 1,
+                        text: "Hi, Bill",
+                        fromMe: true,
+                        time: "9:00 pm"
+                    }
+                ],
+                status: "offline"
             }
         ]
     }

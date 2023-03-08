@@ -1,0 +1,60 @@
+.users {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    gap: 10px;
+}
+
+.user {
+    width: 100%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    align-items: center;
+    gap: 0 10px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    outline: 0;
+    cursor: pointer;
+    text-align: left;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.user:focus {
+    border-color: var(--bg-color);
+}
+
+.user:hover,
+.active {
+    background-color: var(--button-color);
+}
+
+.user:active {
+    background-color: var(--button-color-hover);
+}
+
+.status {
+    opacity: 0.7;
+    font-size: 14px;
+}
+
+.image_ibg {
+    grid-row: span 2;
+    flex: 0 0 50px;
+    padding-bottom: 50px;
+}
+
+.image_ibg img {
+    border-radius: 50%;
+}
+
+
+@media (min-width: 992px) {
+    .status {
+        font-size: 16px;
+    }
+}

@@ -1,5 +1,7 @@
-import {SidebarType} from "../../store/store";
 import c from "./Sidebar.module.css";
+import {FC} from "react";
+import {NavLink} from "react-router-dom";
+import {SidebarType} from "../../store/store";
 
 
 type SidebarProps = {
@@ -9,11 +11,11 @@ type SidebarProps = {
 }
 
 
-function Sidebar({sidebar, burgerState, toggleBurger}: SidebarProps) {
+const Sidebar: FC<SidebarProps> = ({sidebar, burgerState, toggleBurger}) => {
     const navList = sidebar.links.map(link => {
         return (
             <li key={link.id}>
-                <a className={c.link} href={link.url}>{link.text}</a>
+                <NavLink to={link.url} className={c.link} activeClassName={c.active}>{link.text}</NavLink>
             </li>
         );
     });

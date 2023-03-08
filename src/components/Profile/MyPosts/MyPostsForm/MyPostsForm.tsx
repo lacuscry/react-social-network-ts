@@ -1,7 +1,8 @@
 import c from "./MyPostsForm.module.css";
+import {FC} from "react";
 
 
-function MyPostsForm() {
+const MyPostsForm: FC = () => {
     return(
         <form className={c.form}>
             <textarea className={c.textarea} placeholder="Share something"/>

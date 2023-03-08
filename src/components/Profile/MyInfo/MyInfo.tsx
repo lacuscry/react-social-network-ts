@@ -1,5 +1,6 @@
 import c from "./MyInfo.module.css";
 import {ProfileInfoType} from "../../../store/store";
+import {FC} from "react";
 
 
 type MyInfoType = {
@@ -7,14 +8,14 @@ type MyInfoType = {
 }
 
 
-function MyInfo({info}: MyInfoType) {
+const MyInfo: FC<MyInfoType> = ({info}) => {
     return (
         <div className={c.info}>
             <div className={c.avatar_ibg}>
-                <img src={info.avatar}/>
+                <img src={info.avatar} alt={`${info.name}'s avatar`}/>
             </div>
             <div className={c.bg_ibg}>
-                <img src={info.bg}/>
+                <img src={info.bg} alt={`${info.name}'s image`}/>
             </div>
             <div className={c.about}>
                 <div className={c.line}>

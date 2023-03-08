@@ -1,5 +1,5 @@
 import c from "./Header.module.css";
-import React, {useEffect, useRef, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 
 
 type HeaderType = {
@@ -8,7 +8,7 @@ type HeaderType = {
 }
 
 
-function Header(props: HeaderType) {
+const Header: FC<HeaderType> = ({burgerState, toggleBurger}) => {
     const [fixed, setFixed] = useState(false);
 
     useEffect(() => {
@@ -19,10 +19,10 @@ function Header(props: HeaderType) {
         window.addEventListener("scroll", onScroll);
 
         return () => window.removeEventListener("scroll", onScroll);
-    },[fixed]);
+    }, [fixed]);
 
     return (
-        <header className={c.header + (props.burgerState ? ` ${c.open_burger}` : "") + (fixed ? ` ${c.fixed}` : "")}>
+        <header className={c.header + (burgerState ? ` ${c.open_burger}` : "") + (fixed ? ` ${c.fixed}` : "")}>
             <div className={c.container}>
                 <a className={c.logo} href={"/"}>
                     <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,7 +34,7 @@ function Header(props: HeaderType) {
                             fill="white"/>
                     </svg>
                 </a>
-                <button onClick={props.toggleBurger} className={c.burger}>
+                <button onClick={toggleBurger} className={c.burger}>
                     <span></span>
                 </button>
             </div>

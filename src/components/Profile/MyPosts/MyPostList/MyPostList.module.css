@@ -69,7 +69,6 @@
     gap: 5px;
 }
 
-.likes,
 .comments,
 .views {
     display: flex;
@@ -85,7 +84,6 @@
     gap: 3px;
 }
 
-.likes,
 .comments {
     padding: 5px;
     background-color: var(--button-color);
@@ -97,14 +95,11 @@
     transition: background-color 0.3s;
 }
 
-.likes:hover,
 .comments:hover,
-.likes:focus,
 .comments:focus {
     background-color: var(--button-color-hover);
 }
 
-.likes svg,
 .comments svg,
 .views svg {
     flex: 0 0 15px;
@@ -114,7 +109,6 @@
     object-fit: contain;
 }
 
-.likes span,
 .comments span,
 .views span {
     font-size: 12px;
@@ -169,7 +163,6 @@
         gap: 10px;
     }
 
-    .likes,
     .comments {
         padding: 7px;
         gap: 5px;
@@ -179,14 +172,12 @@
         gap: 5px;
     }
 
-    .likes svg,
     .comments svg,
     .views svg {
         flex: 0 0 17px;
         max-width: 17px;
     }
 
-    .likes span,
     .comments span,
     .views span {
         font-size: 12px;
