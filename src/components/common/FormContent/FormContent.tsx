@@ -1,13 +1,20 @@
-import c from "./MyPostsForm.module.css";
+import c from "./FormContent.module.css";
 import {FC} from "react";
 
 
-const MyPostsForm: FC = () => {
+type FormContentPropsType = {
+    inputText: string
+    btnText: string
+    parentClass?: string
+}
+
+
+const FormContent: FC<FormContentPropsType> = ({inputText, btnText, parentClass}) => {
     return(
-        <form className={c.form}>
-            <textarea className={c.textarea} placeholder="Share something"/>
+        <form className={`${c.form} ${parentClass}`}>
+            <textarea className={c.textarea} placeholder={inputText}/>
             <div className={c.buttons}>
-                <button className={c.button} type="submit">Post</button>
+                <button className={c.button} type="submit">{btnText}</button>
                 <label className={c.file}>
                     <input accept=".jpg, .png, .jpeg" type="file"/>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,4 +36,4 @@ const MyPostsForm: FC = () => {
 }
 
 
-export default MyPostsForm;
+export default FormContent;

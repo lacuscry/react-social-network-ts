@@ -1,8 +1,8 @@
 import c from "./MyPosts.module.css";
-import {ProfileType} from "../../../store/store";
-import MyPostsForm from "./MyPostsForm/MyPostsForm";
-import MyPostList from "./MyPostList/MyPostList";
 import {FC} from "react";
+import {ProfileType} from "../../../store/store";
+import MyPostList from "./MyPostList/MyPostList";
+import FormContent from "../../common/FormContent/FormContent";
 
 
 type MyPostsType = {
@@ -13,7 +13,7 @@ type MyPostsType = {
 const MyPosts: FC<MyPostsType> = ({profile}) => {
     return (
         <div className={c.posts}>
-            <MyPostsForm/>
+            <FormContent inputText="Share something" btnText="Post"/>
             <h2 className={c.title}>My posts</h2>
             <MyPostList profile={profile}/>
         </div>

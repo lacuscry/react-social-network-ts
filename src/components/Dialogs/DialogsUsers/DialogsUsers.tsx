@@ -4,7 +4,7 @@ import {DialogsType} from "../../../store/store";
 
 
 type DialogsUsersPropsType = {
-    activeIndex: number
+    activeIndex: number | null
     setActive: (id: number) => void
     dialogs: DialogsType[]
 }

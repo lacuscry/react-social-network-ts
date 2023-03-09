@@ -73,6 +73,11 @@ body {
         gap: 30px;
     }
 
+    .app.overflow {
+        overflow: unset;
+        height: unset;
+    }
+
     .content {
         padding-top: 115px;
     }

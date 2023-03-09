@@ -81,6 +81,10 @@
         border-radius: 10px;
     }
 
+    .bg {
+        display: none;
+    }
+
     .nav {
         padding: 0;
         position: unset;
