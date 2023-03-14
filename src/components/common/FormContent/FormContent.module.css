@@ -1,5 +1,6 @@
 .form {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 100px;
     gap: 5px
 }
 
@@ -27,8 +28,23 @@
     color: #fff;
 }
 
+.textarea.error_border {
+    border-color: red;
+}
+
+.textarea.error_border::placeholder {
+    opacity: 1;
+    color: red;
+}
+
+.error {
+    grid-column: span 2;
+    color: red;
+    font-size: 14px;
+    text-indent: 5px;
+}
+
 .buttons {
-    flex: 0 0 100px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 35px);
@@ -48,7 +64,12 @@
     cursor: pointer;
     text-align: center;
     color: #fff;
-    transition: background-color 0.3s;
+    transition: opacity 0.3s, background-color 0.3s;
+}
+
+.button[disabled] {
+    opacity: 0.5;
+    background-color: var(--button-color-disabled);
 }
 
 .file,
@@ -74,10 +95,10 @@
     opacity: 0;
 }
 
-.button:hover,
+.button:not([disabled]):hover,
 .file:hover,
 .voice:hover,
-.button:focus,
+.button:not([disabled]):focus,
 .file:has(input:focus),
 .voice:focus {
     background-color: var(--button-color-hover);
@@ -86,11 +107,11 @@
 
 @media (min-width: 769px) {
     .form {
+        grid-template-columns: 1fr 130px;
         gap: 7px
     }
 
     .buttons {
-        flex: 0 0 130px;
         grid-template-rows: repeat(2, 40px);
         gap: 7px;
     }

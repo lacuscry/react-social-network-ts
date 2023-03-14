@@ -4,6 +4,7 @@
     --block-color-dark: #3A4454;
     --button-color: #1c395d;
     --button-color-hover: #13293d;
+    --button-color-disabled: #232a2f;
 }
 
 * {

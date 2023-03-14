@@ -1,5 +1,5 @@
 .messages {
-    display: none;
+    display: flex;
     width: 100%;
     padding: 15px;
     flex-direction: column;
@@ -13,7 +13,7 @@
 .message {
     position: relative;
     align-self: start;
-    max-width: calc(100% - 55px);
+    max-width: calc(100% - 40px);
     display: grid;
     grid-template-columns: 40px 1fr;
     gap: 10px;
@@ -74,20 +74,16 @@
 }
 
 .message .time {
-    right: -55px;
+    right: -40px;
 }
 
 .mine .time {
     right: unset;
-    left: -55px;
+    left: -40px;
 }
 
 
 @media (min-width: 769px) {
-    .messages {
-        display: flex;
-    }
-
     .message {
         grid-template-columns: 50px 1fr;
     }

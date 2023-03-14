@@ -9,7 +9,8 @@ type HeaderType = {
 
 
 const Header: FC<HeaderType> = ({burgerState, toggleBurger}) => {
-    const [fixed, setFixed] = useState(false);
+    const [fixed, setFixed] = useState<boolean>(false);
+
 
     useEffect(() => {
         const onScroll = () => {
@@ -20,6 +21,7 @@ const Header: FC<HeaderType> = ({burgerState, toggleBurger}) => {
 
         return () => window.removeEventListener("scroll", onScroll);
     }, [fixed]);
+
 
     return (
         <header className={c.header + (burgerState ? ` ${c.open_burger}` : "") + (fixed ? ` ${c.fixed}` : "")}>

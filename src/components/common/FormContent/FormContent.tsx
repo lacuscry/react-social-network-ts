@@ -1,20 +1,58 @@
 import c from "./FormContent.module.css";
-import {FC} from "react";
+import {ChangeEvent, KeyboardEvent, FC, MouseEvent, useState} from "react";
 
 
 type FormContentPropsType = {
+    setArrayHandler: (text: string) => void
     inputText: string
     btnText: string
     parentClass?: string
+    errorText: string
 }
 
 
-const FormContent: FC<FormContentPropsType> = ({inputText, btnText, parentClass}) => {
+const FormContent: FC<FormContentPropsType> = ({setArrayHandler, inputText, btnText, parentClass, errorText}) => {
+    const [inputValue, setInputValue] = useState<string>("");
+
+    const [error, setError] = useState<string>("");
+
+
+    const onChangeInputHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        setInputValue(e.currentTarget.value);
+
+        if (inputValue.trim()) setError("");
+    }
+
+    const setArray = () => {
+        if (inputValue.trim()) {
+            setArrayHandler(inputValue);
+
+            setInputValue("");
+        } else {
+            setError(errorText);
+        }
+    }
+
+    const onClickButtonHandler = (e: MouseEvent) => {
+        e.preventDefault();
+
+        setArray();
+    }
+
+    const onKeyDownHandler = (e: KeyboardEvent) => {
+        if (e.key === "Enter") setArray();
+    }
+
+    const onBlurHandler = () => {
+        if (!inputValue.trim()) setError(errorText);
+    }
+
+
     return(
         <form className={`${c.form} ${parentClass}`}>
-            <textarea className={c.textarea} placeholder={inputText}/>
+            <textarea onBlur={onBlurHandler} onKeyDown={onKeyDownHandler} onChange={onChangeInputHandler} className={c.textarea + (error ? ` ${c.error_border}` : "")} placeholder={inputText} value={inputValue}/>
             <div className={c.buttons}>
-                <button className={c.button} type="submit">{btnText}</button>
+                <button onClick={onClickButtonHandler} className={c.button} disabled={!inputValue} type="submit">{btnText}</button>
                 <label className={c.file}>
                     <input accept=".jpg, .png, .jpeg" type="file"/>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,6 +69,7 @@ const FormContent: FC<FormContentPropsType> = ({inputText, btnText, parentClass}
                     </svg>
                 </button>
             </div>
+            {error && <div className={c.error}>{error}</div>}
         </form>
     )
 }

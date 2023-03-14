@@ -1,34 +1,40 @@
 import c from "./DialogsUsers.module.css";
-import {FC} from "react";
+import {FC, MouseEvent} from "react";
 import {DialogsType} from "../../../store/store";
 
 
 type DialogsUsersPropsType = {
-    activeIndex: number | null
-    setActive: (id: number) => void
+    activeDialog: number
+    setActiveDialog: (id: number) => void
     dialogs: DialogsType[]
 }
 
 
-const DialogsUsers: FC<DialogsUsersPropsType> = ({activeIndex, setActive, dialogs}) => {
+const DialogsUsers: FC<DialogsUsersPropsType> = ({activeDialog, setActiveDialog, dialogs}) => {
+    const onClickHandler = (e: MouseEvent<HTMLButtonElement>) => setActiveDialog(+e.currentTarget.value);
+
+
+    const usersList = dialogs.map((dialog, i) => {
+        return (
+            <li key={dialog.id}>
+                <button onClick={onClickHandler} value={i} className={c.user + (activeDialog === i ? ` ${c.active}` : "")}>
+                    <div className={c.image_ibg}>
+                        <img src={dialog.avatar} alt={`${dialog.name}'s avatar`}/>
+                    </div>
+                    <div className={c.name}>{dialog.name}</div>
+                    <div className={c.status}>{dialog.status}</div>
+                </button>
+            </li>
+        );
+    });
+
+
     return (
         <ul className={c.users}>
-            {dialogs.map(dialog => {
-                return (
-                    <li key={dialog.id}>
-                        <button onClick={() => setActive(dialog.id)} className={c.user + (activeIndex === dialog.id ? ` ${c.active}` : "")}>
-                            <div className={c.image_ibg}>
-                                <img src={dialog.avatar} alt={`${dialog.name}'s avatar`}/>
-                            </div>
-                            <div className={c.name}>{dialog.name}</div>
-                            <div className={c.status}>{dialog.status}</div>
-                        </button>
-                    </li>
-                );
-            })}
+            {usersList}
         </ul>
     );
-}
+};
 
 
 export default DialogsUsers;

@@ -1,30 +1,30 @@
 import c from "./MyPostList.module.css";
-import {ProfileType} from "../../../../store/store";
+import {ProfileInfoType, ProfilePostsType} from "../../../../store/store";
 import {FC} from "react";
 import LikeButton from "./LikeButton/LikeButton";
 
 
 type MyPostListType = {
-    profile: ProfileType;
+    posts: ProfilePostsType[]
+    info: ProfileInfoType
 }
 
 
-const MyPostList: FC<MyPostListType> = ({profile}) => {
-    const postList = profile.posts.map(post => {
+const MyPostList: FC<MyPostListType> = ({posts, info}) => {
+    const postList: JSX.Element[] = posts.map(post => {
         return (
             <li key={post.id} className={c.post}>
                 <div className={c.info}>
                     <div className={c.avatar_ibg}>
-                        <img src={profile.info.avatar} alt={`${profile.info.name}'s avatar`}/>
+                        <img src={info.avatar} alt={`${info.name}'s avatar`}/>
                     </div>
-                    <div className={c.name}>{profile.info.name}</div>
-                    <div className={c.online}>{profile.info.online}</div>
+                    <div className={c.name}>{info.name}</div>
+                    <div className={c.online}>{info.online}</div>
                 </div>
                 <div className={c.content}>
                     {post.file && <div className={c.image_ibg}>
-                                    <img src={post.file} alt={`${profile.info.name}'s image`}/>
-                                </div>
-                    }
+                        <img src={post.file} alt={`${info.name}'s image`}/>
+                    </div>}
                     <div className={c.text}>{post.text}</div>
                 </div>
                 <div className={c.statistic}>
@@ -69,12 +69,13 @@ const MyPostList: FC<MyPostListType> = ({profile}) => {
         );
     });
 
+
     return (
         <ul className={c.list}>
             {postList}
         </ul>
     );
-}
+};
 
 
 export default MyPostList;

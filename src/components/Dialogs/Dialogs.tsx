@@ -1,6 +1,7 @@
 import c from "./Dialogs.module.css";
 import {FC, useEffect, useState} from "react";
-import {DialogsPageType, ProfileInfoType} from "../../store/store";
+import {v1} from "uuid";
+import {DialogsMessagesType, DialogsPageType, ProfileInfoType} from "../../store/store";
 import DialogsUsers from "./DialogsUsers/DialogsUsers";
 import DialogsMessages from "./DialogsMessages/DialogsMessages";
 import FormContent from "../common/FormContent/FormContent";
@@ -13,30 +14,34 @@ type DialogsPropsType = {
 
 
 const Dialogs: FC<DialogsPropsType> = ({dialogsPage, profileInfo}) => {
-    const [width, setWidth] = useState(document.body.clientWidth);
+    const [width, setWidth] = useState<number>(document.body.clientWidth);
 
-    const [active, setActive] = useState(() => width > 769 ? 0 : null);
+    const [activeDialog, setActiveDialog] = useState<number>(0);
+
+    const [messages, setMessages] = useState<DialogsMessagesType[]>(dialogsPage.dialogs[activeDialog].messages);
 
 
-    useEffect(() => {
-        window.addEventListener("resize", () => setWidth(document.body.clientWidth));
-    }, [width]);
+    const setMessageHandler = (text: string) => setMessages([...messages, {
+        id: v1(),
+        text,
+        fromMe: true,
+        time: `${new Date().getHours()}:${new Date().getMinutes()}`
+    }]);
 
-    if (width > 769 && active === null) {
-        setActive(0);
-    } else if (width < 769 && typeof active === "number") {
-        setActive(null);
-    }
+
+    useEffect(() => window.addEventListener("resize", () => setWidth(document.body.clientWidth)), [width]);
+
+    useEffect(() => setMessages(dialogsPage.dialogs[activeDialog].messages), [activeDialog]);
 
 
     return (
         <div className={c.dialogsPage}>
-            <DialogsUsers activeIndex={active} setActive={setActive} dialogs={dialogsPage.dialogs}/>
-            {typeof active === "number" &&
+            {width > 769 ?
                 <>
-                    <DialogsMessages profileInfo={profileInfo} dialogs={dialogsPage.dialogs} activeDialog={active} theme={dialogsPage.theme} dialogInfo={dialogsPage.dialogs[active]}/>
-                    <FormContent parentClass={c.form} inputText="Write something" btnText="Send"/>
-                </>
+                    <DialogsUsers activeDialog={activeDialog} setActiveDialog={setActiveDialog} dialogs={dialogsPage.dialogs}/>
+                    <DialogsMessages profileInfo={profileInfo} theme={dialogsPage.theme} dialogInfo={dialogsPage.dialogs[activeDialog]} messages={messages}/>
+                    <FormContent setArrayHandler={setMessageHandler} parentClass={c.form} inputText="Write something" btnText="Send" errorText="Fill message"/>
+                </> : <div>Мобильной версии нет. Позже...</div>
             }
         </div>
     );

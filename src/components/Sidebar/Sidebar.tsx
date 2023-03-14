@@ -12,13 +12,14 @@ type SidebarProps = {
 
 
 const Sidebar: FC<SidebarProps> = ({sidebar, burgerState, toggleBurger}) => {
-    const navList = sidebar.links.map(link => {
+    const navList: JSX.Element[] = sidebar.links.map(link => {
         return (
             <li key={link.id}>
                 <NavLink to={link.url} className={c.link} activeClassName={c.active}>{link.text}</NavLink>
             </li>
         );
     });
+
 
     return (
         <aside className={c.sidebar + (burgerState ? ` ${c.open}` : "")}>

@@ -1,3 +1,5 @@
+import {v1} from "uuid";
+
 type StoreType = {
     sidebar: SidebarType
     profilePage: ProfileType
@@ -22,7 +24,7 @@ export type ProfileInfoType = {
 }
 
 export type ProfilePostsType = {
-    id: number
+    id: string
     text: string
     file: string
     date: string
@@ -48,15 +50,15 @@ export type DialogsPageType = {
 }
 
 export type DialogsType = {
-    id: number
+    id: string
     name: string
     avatar: string
     messages: DialogsMessagesType[]
     status: string
 }
 
-type DialogsMessagesType = {
-    id: number
+export type DialogsMessagesType = {
+    id: string
     text: string
     fromMe: boolean
     time: string
@@ -78,7 +80,7 @@ const store: StoreType = {
         },
         posts: [
             {
-                id: 0,
+                id: v1(),
                 text: "Hi. This is my second social network.",
                 file: "",
                 date: "03.01.2023",
@@ -87,7 +89,7 @@ const store: StoreType = {
                 views: "500"
             },
             {
-                id: 1,
+                id: v1(),
                 text: "Why are you here?",
                 file: "",
                 date: "03.02.2023",
@@ -96,7 +98,7 @@ const store: StoreType = {
                 views: "1.2K"
             },
             {
-                id: 2,
+                id: v1(),
                 text: "It is me.",
                 file: "https://i.pinimg.com/originals/e8/65/16/e86516d00ea96913723bd4c3c391082b.jpg",
                 date: "03.03.2023",
@@ -145,41 +147,41 @@ const store: StoreType = {
         theme: "https://blog.1a23.com/wp-content/uploads/sites/2/2020/02/Desktop.png",
         dialogs: [
             {
-                id: 0,
+                id: v1(),
                 name: "Mark Zuckerberg",
                 avatar: "https://upload.wikimedia.org/wikipedia/commons/1/18/Mark_Zuckerberg_F8_2019_Keynote_%2832830578717%29_%28cropped%29.jpg",
                 messages: [
                     {
-                        id: 0,
+                        id: v1(),
                         text: "Hello Tim",
                         fromMe: false,
-                        time: "5:00 am"
+                        time: "17:00"
                     },
                     {
-                        id: 1,
+                        id: v1(),
                         text: "Hi, Mark",
                         fromMe: true,
-                        time: "5:05 am"
+                        time: "17:05"
                     }
                 ],
                 status: "online"
             },
             {
-                id: 1,
+                id: v1(),
                 name: "Bill Gates",
                 avatar: "https://upload.wikimedia.org/wikipedia/commons/a/a8/Bill_Gates_2017_%28cropped%29.jpg",
                 messages: [
                     {
-                        id: 0,
+                        id: v1(),
                         text: "Harvard was just a phenomenal experience for me. Academic life was fascinating. I used to sit in on lots of classes I hadn’t even signed up for. And dorm life was terrific. I lived up at Radcliffe, in Currier House. There were always lots of people in my dorm room late at night discussing things, because everyone knew I didn’t worry about getting up in the morning. That’s how I came to be the leader of the anti-social group. We clung to each other as a way of validating our rejection of all those social people.",
                         fromMe: false,
-                        time: "8:00 pm"
+                        time: "20:00"
                     },
                     {
-                        id: 1,
+                        id: v1(),
                         text: "Hi, Bill",
                         fromMe: true,
-                        time: "9:00 pm"
+                        time: "21:00"
                     }
                 ],
                 status: "offline"
